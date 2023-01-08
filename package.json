@@ -1,0 +1,110 @@
+{
+  "name": "timelapse",
+  "displayName": "Timelapse",
+  "description": "See your coding session from the lens of a timelapse!",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "timelapse.startRecording",
+        "title": "Start Recording",
+        "category": "Timelapse"
+      },
+      {
+        "command": "timelapse.stopRecording",
+        "title": "Stop Recording",
+        "category": "Timelapse"
+      }
+    ],
+    "configuration": {
+      "title": "Timelapse",
+      "properties": {
+        "timelapse.saveDirectory": {
+          "type": "string",
+          "default": "vscode-timelapses",
+          "description": "When you do not specify a place to save your timelapse, it will be saved in this directory automatically",
+          "title": "Save directory",
+          "examples": [
+            "/home/user/timelapses",
+            "D:/VSCode_Videos/",
+            "my/timelapse/directory"
+          ]
+        },
+        "timelapse.sourceFps": {
+          "type": "integer",
+          "default": 1,
+          "description": "The recording FPS of the not-sped-up video",
+          "title": "Source FPS",
+          "examples": [
+            1,
+            2,
+            3
+          ]
+        },
+        "timelapse.finalFps": {
+          "type": "integer",
+          "default": 60,
+          "description": "The FPS to speed the video up to",
+          "title": "Final FPS",
+          "examples": [
+            30,
+            45,
+            144
+          ]
+        }
+      }
+    }
+  },
+  "author": {
+    "name": "youngermax",
+    "url": "https://github.com/youngermax"
+  },
+  "publisher": "youngermax",
+  "os": [
+    "Windows",
+    "Mac OS",
+    "Linux"
+  ],
+  "keywords": [
+    "timelapse", "obs", "recording", "programming timelapse", "vscode extension"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youngermax/timelapse"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^2.16.0"
+  }
+}
